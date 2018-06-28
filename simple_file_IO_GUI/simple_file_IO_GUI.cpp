@@ -46,17 +46,25 @@ void simple_file_IO_GUI::log(QString in)
 	infoLabel->setText(next);
 }
 
+
 void simple_file_IO_GUI::open()
 {
 	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", "*");
 	infoLabel->setText(fileName);
-	log("open file : " + fileName);
+
+	f = new QFile(fileName);
+
+	log("Open : " + fileName);
 }
 
 void simple_file_IO_GUI::save()
 {
-	log("save");
-}
+	QString DirName = QFileDialog::getExistingDirectory(this, tr("Save Directiory"), "");
+	log("Save : " + DirName);
+	
+	if(f!=nullptr)
+		f->~QFile();
+}	
 
 
 void simple_file_IO_GUI::createActions()

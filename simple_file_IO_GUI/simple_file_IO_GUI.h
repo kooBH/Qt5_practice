@@ -1,16 +1,15 @@
 #pragma once
 
 
-#include <QtWidgets/QMainWindow>
 #include <QMainWindow>
 #include <QLabel>
 #include <QVBoxLayout>
 #include <QAction>
-#include <QMessageBox>
 #include <QMenu>
 #include <QApplication>
 #include <QMenuBar>
 #include <QFileDialog>
+#include <Qfile>
 
 using std::string;
 
@@ -46,8 +45,11 @@ private:
 
 	QLabel *infoLabel;
 
+	QFile *f=nullptr;
+
 	/*************************************************************/
 
 	void log(QString);
-
+	void openFile();
+	
 };
