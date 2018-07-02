@@ -1,4 +1,6 @@
-#include "process.h"
+#include <iostream>
+#include <fstream>
+
 
 #include <QMainWindow>
 #include <QLabel>
@@ -10,6 +12,8 @@
 #include <QFileDialog>
 #include <Qfile>
 
+
+using std::string;
 
 class QAction;
 class QActionGroup;
@@ -48,5 +52,6 @@ private:
 	/*************************************************************/
 
 	void log(QString);	
+	void fileProcess(string);
 };
 

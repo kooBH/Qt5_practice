@@ -1,5 +1,16 @@
 #include "simple_file_IO_GUI.h"
 
+void simple_file_IO_GUI::fileProcess(string filename)
+{
+	std::ofstream f;
+	f.open(filename);
+	
+	this->log("You opened " + QString::fromStdString(filename));
+
+	f.close();
+
+}
+
 simple_file_IO_GUI::simple_file_IO_GUI(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -52,7 +63,7 @@ void simple_file_IO_GUI::open()
 
 	f = new QFile(fileName);
 
-	log("Open : " + fileName);
+	//log("Open : " + fileName);
 	fileProcess(fileName.toStdString());
 }
 
