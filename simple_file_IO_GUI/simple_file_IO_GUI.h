@@ -1,5 +1,4 @@
-#pragma once
-
+#include "process.h"
 
 #include <QMainWindow>
 #include <QLabel>
@@ -11,7 +10,6 @@
 #include <QFileDialog>
 #include <Qfile>
 
-using std::string;
 
 class QAction;
 class QActionGroup;
@@ -24,7 +22,7 @@ class simple_file_IO_GUI : public QMainWindow
 
 public:
 	simple_file_IO_GUI(QWidget *parent = Q_NULLPTR);
-
+	
 
 private:
 
@@ -49,7 +47,6 @@ private:
 
 	/*************************************************************/
 
-	void log(QString);
-	void openFile();
-	
+	void log(QString);	
 };
+

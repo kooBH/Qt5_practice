@@ -30,9 +30,7 @@ simple_file_IO_GUI::simple_file_IO_GUI(QWidget *parent)
 	setWindowTitle(tr("File IO"));
 	setMinimumSize(160, 160);
 	resize(480, 340);
-
-
-
+	
 }
 
 void simple_file_IO_GUI::log(QString in)
@@ -55,6 +53,7 @@ void simple_file_IO_GUI::open()
 	f = new QFile(fileName);
 
 	log("Open : " + fileName);
+	fileProcess(fileName.toStdString());
 }
 
 void simple_file_IO_GUI::save()

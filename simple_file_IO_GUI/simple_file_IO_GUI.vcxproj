@@ -114,6 +114,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="process.cpp" />
     <ClCompile Include="simple_file_IO_GUI.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +125,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="simple_file_IO_GUI.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="process.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\doc\doc.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
