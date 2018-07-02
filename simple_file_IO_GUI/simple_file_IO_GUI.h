@@ -47,11 +47,9 @@ private:
 
 	QLabel *infoLabel;
 
-	QFile *f=nullptr;
 
 	/*************************************************************/
 
 	void log(QString);	
-	void fileProcess(string);
 };
 

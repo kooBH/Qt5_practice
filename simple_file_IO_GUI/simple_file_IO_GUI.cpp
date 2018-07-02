@@ -1,14 +1,37 @@
 #include "simple_file_IO_GUI.h"
 
-void simple_file_IO_GUI::fileProcess(string filename)
+void simple_file_IO_GUI::open()
+{
+	std::ifstream f;
+	QString QfileName = QFileDialog::getOpenFileName(this, tr("Open File"), "default name", tr("default type (*.a *.b *.c)"));
+	
+	
+	if (QfileName.isEmpty())
+	{
+		log("You canceled");
+		return;
+	}
+	f.open(QfileName.toStdString());
+	log("Open : " + QfileName);
+	
+	f.close();
+}
+
+void simple_file_IO_GUI::save()
 {
 	std::ofstream f;
-	f.open(filename);
-	
-	this->log("You opened " + QString::fromStdString(filename));
+	QString QfileName =  QFileDialog::getSaveFileName(this, tr("Save Directiory"), "default name", tr("default type (*.a *.b *.c)"));
+	if (QfileName.isEmpty())
+	{
+		log("You canceled");
+		return;
+	}
+	f.open(QfileName.toStdString());
+	log("Save : " + QfileName);
 
 	f.close();
 
+	
 }
 
 simple_file_IO_GUI::simple_file_IO_GUI(QWidget *parent)
@@ -56,25 +79,7 @@ void simple_file_IO_GUI::log(QString in)
 }
 
 
-void simple_file_IO_GUI::open()
-{
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Open File"), "", "*");
-	infoLabel->setText(fileName);
 
-	f = new QFile(fileName);
-
-	//log("Open : " + fileName);
-	fileProcess(fileName.toStdString());
-}
-
-void simple_file_IO_GUI::save()
-{
-	QString DirName = QFileDialog::getExistingDirectory(this, tr("Save Directiory"), "");
-	log("Save : " + DirName);
-	
-	if(f!=nullptr)
-		f->~QFile();
-}	
 
 
 void simple_file_IO_GUI::createActions()
