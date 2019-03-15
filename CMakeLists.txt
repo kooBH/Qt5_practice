@@ -34,6 +34,9 @@ set(SRC
     style.h
     switch.h
     Funcs.h
+
+    BorderLayout.h
+    BorderLayout.cpp
 )
 #add_library(bar SHARED IMPORTED)
 

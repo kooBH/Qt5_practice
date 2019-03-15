@@ -15,7 +15,7 @@ class KLabel:public QLabel{
     //  setFrameStyle(QFrame::Plain|QFrame::HLine );
       setFrameStyle(QFrame::Plain|QFrame::Box);
 
-      setAlignment(Qt::AlignBottom | Qt::AlignRight);
+//      setAlignment(Qt::AlignBottom | Qt::AlignRight);
     }
 
 

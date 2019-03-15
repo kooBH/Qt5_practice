@@ -6,6 +6,7 @@
 
 
 #include <QVBoxLayout>
+#include "BorderLayout.h"
 
 #include <stdio.h>
 #include <string>
@@ -18,8 +19,7 @@ int main(int argc, char **argv)
   App application(argc,argv);
 
   KWidget container;
-  QVBoxLayout mainLayout;
-  container.setLayout(&mainLayout);
+  BorderLayout mainLayout;
 
   KLabel *label = new KLabel("label");
   KPushButton *button = new KPushButton("button");
@@ -28,9 +28,11 @@ int main(int argc, char **argv)
   
   //label->setText("first line\nsecond line");
 
-  mainLayout.addWidget(label);
-  mainLayout.addWidget(button);
-  mainLayout.addWidget(sw);
+  mainLayout.addWidget(label,BorderLayout::Center);
+  mainLayout.addWidget(button,BorderLayout::West);
+  mainLayout.addWidget(sw,BorderLayout::Center);
+
+  container.setLayout(&mainLayout);
 
 
   container.show();
