@@ -18,6 +18,7 @@
 #define SWITCH_H
 
 //#include <QtWidgets>
+#include "QtCore"
 #include <QVariantAnimation>
 #include <QPointer>
 #include "header.h"
@@ -47,6 +48,7 @@ protected:
 
 private:
     QPointer<QObject> target;
+    int ID;
 };
 
 class SelectionControl :public QAbstractButton {

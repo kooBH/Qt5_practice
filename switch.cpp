@@ -250,11 +250,11 @@ void Switch::toggle(Qt::CheckState state) {
         thumbPosAniamtion->interpolate(0, (style.indicatorMargin.left() + style.indicatorMargin.right() + 2) * 2);
         thumbBrushAnimation->interpolate(colorFromOpacity(style.thumbOffBrush, style.thumbOffOpacity), colorFromOpacity(style.thumbOnBrush, style.thumbOnOpacity));
         trackBrushAnimation->interpolate(colorFromOpacity(style.trackOffBrush, style.trackOffOpacity), colorFromOpacity(style.trackOnBrush, style.trackOnOpacity));
-        printf("to unchecked\n");
+        printf("to unchecked : \n");
     } else { // Qt::Unchecked
         thumbPosAniamtion->interpolate(thumbPosAniamtion->currentValue().toInt(), 0);
         thumbBrushAnimation->interpolate(colorFromOpacity(style.thumbOnBrush, style.thumbOnOpacity), colorFromOpacity(style.thumbOffBrush, style.thumbOffOpacity));
         trackBrushAnimation->interpolate(colorFromOpacity(style.trackOnBrush, style.trackOnOpacity), colorFromOpacity(style.trackOffBrush, style.trackOffOpacity));
-        printf("to checked\n");
+        printf("to checked : \n");
     }
 }

@@ -262,3 +262,5 @@ __pycache__/
 *.pyc
 
 build/
+lib/
+testproject_autogen/
