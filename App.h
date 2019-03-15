@@ -11,18 +11,17 @@ class App :public QApplication{
   private:
 
   public:
-  App( int & argc ,char** argv );
-  ~App();
-};
-
-
-App::App( int & argc ,char** argv ):QApplication(  argc ,argv ){
+App( int & argc ,char** argv ):QApplication( argc ,argv ){
   printf("App init\n");
 }
 
-App::~App(){
+~App(){
   printf("App finish\n");
 }
+
+
+};
+
 
 
 #endif

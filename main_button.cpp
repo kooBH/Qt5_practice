@@ -1,4 +1,5 @@
 #include "switch.h"
+#include "KPushButton.h"
 #include "window.h"
 #include "Funcs.h"
 #include "App.h"
@@ -42,7 +43,7 @@ int main(int argc, char **argv)
 
  std::function<void(int)>lambda  = [=](int a) {printf("hello %d\n",a);};
 
-  QPushButton *button = new QPushButton("&Download");
+  KPushButton *button = new KPushButton("&Download");
 //  QObject::connect(button,&QPushButton::clicked,&Funcs::F1);
 //
   /*
@@ -50,12 +51,21 @@ int main(int argc, char **argv)
        button->setText("Hi");
        });
    */
-  int b = 7; 
+  int cnt = 0; 
 // 안됨
 //  QObject::connect(button, &QPushButton::clicked, lambda(b));
  
 //  됨
-  QObject::connect(button, &QPushButton::clicked, [b](){printf("%d\n",b);});
+  QObject::connect(button, &KPushButton::clicked, 
+      //그냥 캡처하면 rvalue
+      //& 을 해줘야 값 참조
+      [&cnt](){
+      printf("%d\n",cnt);
+      cnt++;
+      
+      }
+      
+  );
 
 
   mainLayout.addWidget(button);
