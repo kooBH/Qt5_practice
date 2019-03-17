@@ -67,18 +67,34 @@ int main(int argc, char **argv)
   
   
   //버튼 조작
-  
+  int state = 1; 
   QObject::connect(buttons[0],&KPushButton::clicked,
       [&](){
-      //switchW.hide();
-      labelW->hide();
-      binL->addWidget(labelW);
+     // switchW.hide();
+     // labelW->hide();
       //mainL.replaceWidget(&switchW,&labelW);
-      
-      //mainL.removeWidget(&labelW);
-      //mainL.addWidget(&switchW,BorderLayout::Center);
-      displayL->replaceWidget(labelW,switchW);
-      switchW->show();
+
+      if(state){
+        displayL->removeWidget(labelW);
+        labelW->hide();
+        displayL->insertWidget(0,switchW);
+        switchW->show();
+        state=0;
+        printf("label -> switch\n");
+      }
+      else{
+        displayL->removeWidget(switchW);
+        switchW->hide();
+        displayL->insertWidget(0,labelW);
+        labelW->show();
+        state=1;
+        printf("switch -> label\n");
+      }
+      //mainL->addWidget(switchW,BorderLayout::Center);
+      //mainW->update();
+    // displayL->replaceWidget(labelW,switchW);
+    // displayL->update();
+     // switchW->show();
       
       }
       );
