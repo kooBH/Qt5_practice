@@ -17,6 +17,7 @@ class KLabel:public QLabel{
 
 //      setAlignment(Qt::AlignBottom | Qt::AlignRight);
     }
+    ~KLabel(){}
 
 
   private:

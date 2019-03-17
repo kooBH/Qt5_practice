@@ -9,7 +9,8 @@ class KWidget : public QWidget{
   KWidget():QWidget(){
 
  // setSizeIncrement(300,500);
-   resize(300,200);
+//   resize(300,200);
+//setFixedSize
   
   }
 

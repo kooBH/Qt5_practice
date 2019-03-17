@@ -2,6 +2,10 @@
 + 레이아웃 예제 https://doc.qt.io/qt-5/examples-layouts.html
 + QLayout::replaceLayout https://doc.qt.io/qt-5/qlayout.html#replaceWidget  
 
+# NOTE
++ 클래스를 그냥 선언해두면 해제시에 뭔가 꼬임. 그래서 다 포인터로 선언하고
+    해제는 뭐.. 프로세스 종료시 다 될테니까 ㅎㅎ. 일단 두자.
+
 # TODO
 
 프로젝트의 lib 폴더에 so 를 넣어서 Qt 빌드하려는 데 잘 안되네
