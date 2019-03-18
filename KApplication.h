@@ -26,17 +26,14 @@ class KApplication :public QApplication{
   Q_OBJECT
 
   private:
+
+ int state; 
  KWidget *mainW;
  BorderLayout *mainL; 
 
   KWidget *sideW ;
   QVBoxLayout *sideL;
   vector<KPushButton*> buttons;
-
-  //Label widget
-  KWidget *labelW;
-  QBoxLayout *labelL;
-  KLabel *label;
 
   //switch widget
   KWidget *switchW ;
@@ -60,6 +57,7 @@ class KApplication :public QApplication{
   public:
 KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
   int i,j;
+  state = 0;
 
   printf("App init\n");
   //Main
@@ -78,14 +76,6 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
     buttons.push_back(button);
     sideL->addWidget(button,BorderLayout::West);
   }
-
-  //Label widget
-  labelW = new KWidget();
-  labelL = new QBoxLayout(QBoxLayout::TopToBottom);
-  label = new KLabel("label");
-
-  labelW->setStyleSheet("background-color:black;");
-  
 
   //switch widget
   switchW = new KWidget();
@@ -108,12 +98,9 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
   
   
   //버튼 조작
-  int state = 1; 
   QObject::connect(buttons[0],&KPushButton::clicked,
       [&](){
      // switchW.hide();
-     // labelW->hide();
-      //mainL.replaceWidget(&switchW,&labelW);
 
       if(state){
         displayL->removeWidget(RunW);
@@ -121,7 +108,6 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
         displayL->insertWidget(0,switchW);
         switchW->show();
         state=0;
-        printf("label -> switch\n");
       }
       else{
         displayL->removeWidget(switchW);
@@ -129,11 +115,9 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
         displayL->insertWidget(0,RunW);
         RunW->show();
         state=1;
-        printf("switch -> label\n");
       }
       //mainL->addWidget(switchW,BorderLayout::Center);
       //mainW->update();
-    // displayL->replaceWidget(labelW,switchW);
     // displayL->update();
      // switchW->show();
       
@@ -142,15 +126,12 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
   
  
   //레이아웃 넣기
-//  mainL.addWidget(&labelW,BorderLayout::Center);
  // mainL.setSizeConstraint(QLayout::SetFixedSize);
  
 
  
  
   //레이아웃 합치기 Down To Top
-  labelL->addWidget(label);
-  labelW->setLayout(labelL);
 
   switchL->addWidget(sw);
   switchW->setLayout(switchL);

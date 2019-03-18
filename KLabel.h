@@ -9,13 +9,17 @@ class KLabel:public QLabel{
 
   public:
     KLabel(QString text):QLabel(text){
-    
-
 //      setFrameStyle(QFrame::Panel | QFrame::Plain|QFrame::HLine );
     //  setFrameStyle(QFrame::Plain|QFrame::HLine );
       setFrameStyle(QFrame::Plain|QFrame::Box);
-
 //      setAlignment(Qt::AlignBottom | Qt::AlignRight);
+    }
+
+
+    KLabel(QString text,int w,int h):QLabel(text){
+      setFixedSize(w,h);
+      setFrameStyle(QFrame::Plain|QFrame::Box);
+    
     }
     ~KLabel(){}
 

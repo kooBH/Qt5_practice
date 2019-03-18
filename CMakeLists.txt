@@ -24,11 +24,12 @@ include_directories(
   )
 # Populate a CMake variable with the sources
 set(SRC
-      KApplication.h 
+    KApplication.h 
     switch.cpp
     KLabel.h
     KWidget.h
     KPushButton.h
+    KComboBox.h
     App.h
     header.h
     window.h
@@ -55,6 +56,7 @@ list(APPEND TARGETS
   #  exe_target
   # exe_frame
     exe_module
+    exe_combobox
   )
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
@@ -64,6 +66,7 @@ list(APPEND TARGETS
 #add_executable(exe_target main_target.cpp ${SRC})
 #add_executable(exe_frame main_frame.cpp ${SRC})
 add_executable(exe_module main_module.cpp ${SRC})
+add_executable(exe_combobox main_combobox.cpp ${SRC})
 
 #target_link_libraries(${PROJECT_NAME} bar)
 
