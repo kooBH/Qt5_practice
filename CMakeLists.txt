@@ -24,6 +24,7 @@ include_directories(
   )
 # Populate a CMake variable with the sources
 set(SRC
+      KApplication.h 
     switch.cpp
     KLabel.h
     KWidget.h
@@ -34,7 +35,9 @@ set(SRC
     style.h
     switch.h
     Funcs.h
+    KRun.h
 
+   
     BorderLayout.h
     BorderLayout.cpp
 )
@@ -47,18 +50,20 @@ set(SRC
 #)
 set(TARGETS)
 list(APPEND TARGETS 
-  exe_button 
-  exe_label 
-  exe_target
-  exe_frame
+  #  exe_button 
+  #  exe_label 
+  #  exe_target
+  # exe_frame
+    exe_module
   )
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
 # Tell CMake to create the helloworld executable
-add_executable(exe_button main_button.cpp ${SRC})
-add_executable(exe_label main_label.cpp ${SRC})
-add_executable(exe_target main_target.cpp ${SRC})
-add_executable(exe_frame main_frame.cpp ${SRC})
+#add_executable(exe_button main_button.cpp ${SRC})
+#add_executable(exe_label main_label.cpp ${SRC})
+#add_executable(exe_target main_target.cpp ${SRC})
+#add_executable(exe_frame main_frame.cpp ${SRC})
+add_executable(exe_module main_module.cpp ${SRC})
 
 #target_link_libraries(${PROJECT_NAME} bar)
 
