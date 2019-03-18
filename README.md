@@ -1,9 +1,9 @@
 + 전체 예제 https://doc.qt.io/qt-5/qtexamples.html
 + 레이아웃 예제 https://doc.qt.io/qt-5/examples-layouts.html
-+ QLayout::replaceLayout https://doc.qt.io/qt-5/qlayout.html#replaceWidget  
-
++ QLayout: replaceLayout https://doc.qt.io/qt-5/qlayout.html#replaceWidget  
 + QWidget : https://doc.qt.io/qt-5/qwidget-members.html
 + QLayout : https://doc.qt.io/qt-5/qlayout-members.html
++ Qt 배https://doc-snapshots.qt.io/qt5-5.10/deployment.html
 
 # NOTE
 + 클래스를 그냥 선언해두면 해제시에 뭔가 꼬임. 그래서 다 포인터로 선언하고
