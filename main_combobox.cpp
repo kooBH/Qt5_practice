@@ -1,11 +1,11 @@
-#include <QApplication>
-#include <QWidget>
-#include <QVBoxLayout>
+#include "QApplication"
+#include "QWidget"
+#include "QVBoxLayout"
 #include "KComboBox.h"
 
 #include <iostream>
 
-#include <QtGlobal>
+#include "QtGlobal"
 
 using namespace std;
 

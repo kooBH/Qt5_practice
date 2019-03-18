@@ -9,6 +9,7 @@ set(CMAKE_AUTOMOC ON)
 # Create code from a list of Qt designer ui files
 set(CMAKE_AUTOUIC ON)
 
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # Find the QtWidgets library
 #find_package(Qt5Widgets CONFIG REQUIRED)
 #find_package(Qt5Core CONFIG REQUIRED)
@@ -19,8 +20,13 @@ find_package(Qt5 COMPONENTS Core Widgets Gui REQUIRED
   # NO_DEFAULT_PATH
   )
 
+message(${Qt5_DIR})
+
 include_directories(
   include
+  include/QtCore
+  include/QtGui
+  include/QtWidgets
   )
 # Populate a CMake variable with the sources
 set(SRC
@@ -55,7 +61,7 @@ list(APPEND TARGETS
   #  exe_label 
   #  exe_target
   # exe_frame
-    exe_module
+  #    exe_module
     exe_combobox
   )
 
@@ -65,19 +71,36 @@ list(APPEND TARGETS
 #add_executable(exe_label main_label.cpp ${SRC})
 #add_executable(exe_target main_target.cpp ${SRC})
 #add_executable(exe_frame main_frame.cpp ${SRC})
-add_executable(exe_module main_module.cpp ${SRC})
+#add_executable(exe_module main_module.cpp ${SRC})
+
 add_executable(exe_combobox main_combobox.cpp ${SRC})
 
 #target_link_libraries(${PROJECT_NAME} bar)
 
 # Use the Widgets module from Qt 5
+
+#list(APPEND CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/lib)
+#find_library(PATH_Qt5Core REQUIRED Qt5Core)
+message(${PATH_Qt5Core})
+
 foreach(TARGET ${TARGETS})
-  target_link_libraries(${TARGET} Qt5::Widgets)
-  target_link_libraries(${TARGET} Qt5::Core)
-  target_link_libraries(${TARGET} Qt5::Gui)
+  #  target_link_libraries(${TARGET} Qt5::Widgets)
+  # target_link_libraries(${TARGET} Qt5::Core)
+  #target_link_libraries(${TARGET} Qt5::Gui)
+  target_link_libraries(${TARGET} 
+  ${PROJECT_SOURCE_DIR}/lib/libQt5Widgets.so
+  ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so
+  ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so)  
+
+  target_compile_options(${TARGET} PRIVATE -fPIC)
 endforeach()
+
+message(${PROJECT_SOURCE_DIR})
+
 #link_directories(${CMAKE_CURRENT_SOURCE_DIR}/lib)
 
 #get_target_property(OUT ${PROJECT_NAME} LINK_LIBRARIES)
 #message(STATUS ${OUT})
+
+
 
