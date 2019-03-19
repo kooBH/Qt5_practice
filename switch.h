@@ -25,8 +25,8 @@
 #include "style.h"
 
 class Animator : public QVariantAnimation {
-    Q_OBJECT
-    Q_PROPERTY(QObject* targetObject READ targetObject WRITE setTargetObject)
+   // Q_OBJECT
+   // Q_PROPERTY(QObject* targetObject READ targetObject WRITE setTargetObject)
 
 public:
     explicit Animator(QObject* target, QObject* parent = nullptr);
@@ -52,7 +52,7 @@ private:
 };
 
 class SelectionControl :public QAbstractButton {
-    Q_OBJECT
+   // Q_OBJECT
 
 public:
     explicit SelectionControl(QWidget* parent = nullptr);
@@ -60,7 +60,7 @@ public:
 
     Qt::CheckState checkState() const;
 
-Q_SIGNALS:
+//Q_SIGNALS:
     void stateChanged(int);
 
 protected:
@@ -71,7 +71,7 @@ protected:
 };
 
 class Switch :public SelectionControl {
-    Q_OBJECT
+   // Q_OBJECT
 
 public:
     explicit Switch(QWidget* parent = nullptr);

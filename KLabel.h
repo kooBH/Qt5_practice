@@ -5,7 +5,7 @@
 #include <QFrame>
 
 class KLabel:public QLabel{
-  Q_OBJECT
+ // Q_OBJECT
 
   public:
     KLabel(QString text):QLabel(text){

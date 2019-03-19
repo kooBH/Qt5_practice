@@ -11,7 +11,7 @@
 #include <QHBoxLayout>
 
 class KRun : public QWidget{
-  Q_OBJECT
+ // Q_OBJECT
   private:
   QVBoxLayout *layout;
 

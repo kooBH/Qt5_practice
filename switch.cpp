@@ -46,7 +46,7 @@ void Animator::setTargetObject(QObject *_target) {
 }
 
 void Animator::updateCurrentValue(const QVariant& value) {
-    Q_UNUSED(value);
+    //Q_UNUSED(value);
 
     if (!target.isNull()) {
         auto update = QEvent(QEvent::StyleAnimationUpdate);

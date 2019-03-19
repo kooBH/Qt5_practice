@@ -5,7 +5,7 @@
 #include "KLabel.h"
 #include "KPushButton.h"
 #include "KWidget.h"
-#include "switch.h"
+//#include "switch.h"
 
 
 #include <QVBoxLayout>
@@ -23,7 +23,7 @@ using namespace std;
 
 class KApplication :public QApplication{
 
-  Q_OBJECT
+  //Q_OBJECT
 
   private:
 
@@ -38,7 +38,7 @@ class KApplication :public QApplication{
   //switch widget
   KWidget *switchW ;
   QBoxLayout *switchL;
-  Switch *sw ;
+  //Switch *sw ;
 
   //display layout
   //포인터로 하지 않으면 이중 할당 에러가나 난다
@@ -80,7 +80,7 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
   //switch widget
   switchW = new KWidget();
   switchL = new QBoxLayout(QBoxLayout::TopToBottom);
-  sw = new Switch("swtich");
+  //sw = new Switch("swtich");
 
   //display layout
   //포인터로 하지 않으면 이중 할당 에러가나 난다
@@ -105,7 +105,8 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
       if(state){
         displayL->removeWidget(RunW);
         RunW->hide();
-        displayL->insertWidget(0,switchW);
+       
+		displayL->insertWidget(0,switchW);
         switchW->show();
         state=0;
       }
@@ -133,7 +134,7 @@ KApplication( int & argc ,char** argv ):QApplication( argc ,argv ){
  
   //레이아웃 합치기 Down To Top
 
-  switchL->addWidget(sw);
+  //switchL->addWidget(sw);
   switchW->setLayout(switchL);
 
   displayL->addWidget(RunW);

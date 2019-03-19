@@ -11,7 +11,8 @@
 using namespace std;
 
 class KComboBox : public QComboBox {
-  Q_OBJECT
+
+  //Q_OBJECT
   public:
    KComboBox(QWidget*parent=nullptr):QComboBox(parent){
    
