@@ -10,8 +10,7 @@
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 
-class KRun : public QWidget{
- // Q_OBJECT
+class KRun : public KWidget{
   private:
   QVBoxLayout *layout;
 
@@ -25,7 +24,7 @@ class KRun : public QWidget{
   KLabel *label_lower;
 
   public:
-  KRun():QWidget(){
+  KRun():KWidget(){
 
     layout = new QVBoxLayout;
 

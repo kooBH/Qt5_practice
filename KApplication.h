@@ -5,7 +5,6 @@
 #include "KLabel.h"
 #include "KPushButton.h"
 #include "KWidget.h"
-//#include "switch.h"
 
 
 #include <QVBoxLayout>
@@ -22,8 +21,6 @@
 using namespace std;
 
 class KApplication :public QApplication{
-
-  //Q_OBJECT
 
   private:
 

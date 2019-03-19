@@ -266,3 +266,4 @@ lib/
 testproject_autogen/
 
 *.swp
+*.dll

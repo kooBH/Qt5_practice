@@ -10,7 +10,7 @@
 using namespace std;
 
 int main(int argc,char**argv){
-QApplication application(argc,argv);
+  QApplication application(argc,argv);
 
   QWidget container;
   container.setFixedSize(300,200);
@@ -23,7 +23,7 @@ QApplication application(argc,argv);
 
   mainLayout.addWidget(&box);
 
-    container.setLayout(&mainLayout);
+  container.setLayout(&mainLayout);
   container.show();
   return application.exec();
 }

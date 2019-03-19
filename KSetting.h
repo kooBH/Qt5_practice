@@ -4,8 +4,7 @@
 #include <QWidget>
 
 
-class KSetting : public QWidget{
-Q_OBJECT
+class KSetting : public KWidget{
   private:
 
 

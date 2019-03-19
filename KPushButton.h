@@ -4,7 +4,6 @@
 #include <QPushButton>
 
 class KPushButton : public QPushButton{
-//Q_OBJECT
   public:
 
   KPushButton(QWidget *parent = nullptr):QPushButton(parent){

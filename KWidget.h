@@ -4,7 +4,6 @@
 #include <QWidget>
 
 class KWidget : public QWidget{
-//  Q_OBJECT
   public:
   KWidget():QWidget(){
 
