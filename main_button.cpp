@@ -1,4 +1,4 @@
-#include "switch.h"
+#include "switch_2.h"
 #include "KPushButton.h"
 #include "window.h"
 #include "Funcs.h"

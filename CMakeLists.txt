@@ -14,13 +14,25 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #find_package(Qt5Widgets CONFIG REQUIRED)
 #find_package(Qt5Core CONFIG REQUIRED)
 #find_package(Qt5PaintDevice CONFIG REQUIRED)
+
+option(switch_2 "b" ON)
+option(button "a" OFF)
+option(label OFF)
+option(combobox OFF)
+option(target OFF)
+option(module OFF)
+option(frame OFF)
+ 
 message(STATUS ${PROJECT_SOURCE_DIR})
+
+
+set(LINKLIBS)
 
 
 include_directories(
   include
-  include/QtCore
-  include/QtGui
+    include/QtCore
+    include/QtGui
   include/QtWidgets
   )
 # Populate a CMake variable with the sources
@@ -35,6 +47,8 @@ set(SRC
     style.h
     Funcs.h
     KRun.h
+    switch_2.h
+    #  switch_2.cpp
 
    
     BorderLayout.h
@@ -48,24 +62,43 @@ set(SRC
 #  INTERFACE_INCLUDE_DIRECTORIES "${CMAKE_SOURCE_DIR}"
 #)
 set(TARGETS)
-list(APPEND TARGETS 
-  #  exe_button 
-  #  exe_label 
-  #  exe_target
-  # exe_frame
-    exe_module
-    exe_combobox
-  )
+if(label)
+  list(APPEND TARGETS exe_label)
+  add_executable(exe_label main_label.cpp ${SRC}) 
+endif(label)
+if(button)
+  list(APPEND TARGETS exe_button)
+  add_executable(exe_button main_button.cpp ${SRC}) 
+endif(button)
+if(combobox)
+  list(APPEND TARGETS exe_combobox)
+  add_executable(exe_combobox main_combobox.cpp ${SRC}) 
+endif(combobox)
+if(module)
+  list(APPEND TARGETS exe_module)
+  add_executable(exe_module main_module.cpp ${SRC}) 
+endif(module)
+if(frame)
+  list(APPEND TARGETS exe_frame)
+  add_executable(exe_frame main_frame.cpp ${SRC}) 
+endif(frame)
+if(target)
+  list(APPEND TARGETS exe_target)
+  add_executable(exe_target main_target.cpp ${SRC}) 
+endif(target)
+if(switch_2)
+  list(APPEND TARGETS exe_switch_2)
+  add_executable(exe_switch_2 main_switch_2.cpp ${SRC}) 
+  message("switch_2 ON")
+endif(switch_2)
+
+
+
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
 # Tell CMake to create the helloworld executable
-#add_executable(exe_button main_button.cpp ${SRC})
-#add_executable(exe_label main_label.cpp ${SRC})
-#add_executable(exe_target main_target.cpp ${SRC})
-#add_executable(exe_frame main_frame.cpp ${SRC})
-add_executable(exe_module main_module.cpp ${SRC})
 
-add_executable(exe_combobox main_combobox.cpp ${SRC})
+#add_executable(exe_combobox main_combobox.cpp ${SRC})
 
 #target_link_libraries(${PROJECT_NAME} bar)
 
@@ -75,14 +108,14 @@ add_executable(exe_combobox main_combobox.cpp ${SRC})
 #find_library(PATH_Qt5Core REQUIRED Qt5Core)
 
 if(UNIX)
-	foreach(TARGET ${TARGETS})
-	  #  target_link_libraries(${TARGET} Qt5::Widgets)
-	  # target_link_libraries(${TARGET} Qt5::Core)
-	  #target_link_libraries(${TARGET} Qt5::Gui)
-	  target_link_libraries(${TARGET} 
+list(APPEND LINKLIBS
 	  ${PROJECT_SOURCE_DIR}/lib/libQt5Widgets.so
 	  ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so
-	  ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so)  
+	  ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so
+    )  
+	foreach(TARGET ${TARGETS})
+    target_link_libraries(${TARGET} ${LINKLIBS})
+    message("target" ${TARGET})
 
 	  target_compile_options(${TARGET} PRIVATE -fPIC)
 	endforeach()
