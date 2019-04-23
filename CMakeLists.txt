@@ -15,7 +15,8 @@ set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 #find_package(Qt5Core CONFIG REQUIRED)
 #find_package(Qt5PaintDevice CONFIG REQUIRED)
 
-option(switch_2 "b" ON)
+option(spec "spec" ON)
+option(switch_2 "b" FF)
 option(button "a" OFF)
 option(label OFF)
 option(combobox OFF)
@@ -48,6 +49,7 @@ set(SRC
     Funcs.h
     KRun.h
     switch_2.h
+    KSpectrogram.h
     #  switch_2.cpp
 
    
@@ -91,6 +93,11 @@ if(switch_2)
   add_executable(exe_switch_2 main_switch_2.cpp ${SRC}) 
   message("switch_2 ON")
 endif(switch_2)
+if(spec)
+  list(APPEND TARGETS exe_spec)
+  add_executable(exe_spec main_spec.cpp ${SRC}) 
+  message("spec ON")
+endif(spec)
 
 
 
@@ -128,7 +135,9 @@ elseif(WIN32)
 	 # ${PROJECT_SOURCE_DIR}/lib/Qt5Widgets.lib)  
 	  ${PROJECT_SOURCE_DIR}/lib/Qt5Core.lib
 	  ${PROJECT_SOURCE_DIR}/lib/Qt5Gui.lib
-	  ${PROJECT_SOURCE_DIR}/lib/Qt5Widgets.lib)  
+	  ${PROJECT_SOURCE_DIR}/lib/Qt5Widgets.lib
+    m
+    )  
 	  endforeach()
 	 
 endif()

@@ -19,9 +19,7 @@ class KComboBox : public QComboBox {
    QObject::connect(this,&KComboBox::currentTextChanged,
        [&](const QString &text){
           cout<<text.toStdString()<<endl;
-         
        }
-         
    );
  }
 
