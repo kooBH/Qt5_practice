@@ -7,7 +7,7 @@ project(testproject)
 #############################
 
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 # Find includes in corresponding build directories
 
 # Find the QtWidgets library
@@ -50,6 +50,8 @@ set(SRC
     switch_2.h
     KSpectrogram.h
     #  switch_2.cpp
+    KGl.h
+    KGl.cpp
 
    
     BorderLayout.h
@@ -117,7 +119,13 @@ set(COMPILE_OPTION)
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so.5
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so.5
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5XcbQpa.so.5
+
 	    ${PROJECT_SOURCE_DIR}/lib/platforms/libqxcb.so
+
+	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-egl-integration.so
+	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-glx-integration.so
+
+
 	    )  
 
 
