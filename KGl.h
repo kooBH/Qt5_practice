@@ -5,29 +5,12 @@
 #include <QTimer>
 #include <QOpenGLWidget>
 
+#include <QPaintEvent>
 
 #include <QWidget>
 
 
 #include "wobjectdefs.h"
-
-class Helper
-{
-public:
-    Helper();
-
-public:
-    void paint(QPainter *painter, QPaintEvent *event, int elapsed);
-
-private:
-    QBrush background;
-    QBrush circleBrush;
-    QFont textFont;
-    QPen circlePen;
-    QPen textPen;
-    QPixmap backgroundPixmap;
-};
-
 class GLWidget : public QOpenGLWidget
 {
     //Q_OBJECT
@@ -43,19 +26,16 @@ protected:
 
 private:
 
-    Helper helper;
+ //   Helper helper;
+//
+QBrush background;
+    QBrush circleBrush;
+    QFont textFont;
+    QPen circlePen;
+    QPen textPen;
+    QPixmap backgroundPixmap;
+
+
     int elapsed;
 };
-
-class Window : public QWidget
-{
-    //Q_OBJECT
-    W_OBJECT(Window)
-public:
-    Window();
-
-private:
-};
-
-
 #endif
