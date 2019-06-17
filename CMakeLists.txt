@@ -122,8 +122,8 @@ set(COMPILE_OPTION)
 
 	    ${PROJECT_SOURCE_DIR}/lib/platforms/libqxcb.so
 
-	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-egl-integration.so
-	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-glx-integration.so
+      #	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-egl-integration.so
+      #${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-glx-integration.so
 
 
 	    )  
