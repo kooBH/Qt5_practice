@@ -6,34 +6,22 @@ project(testproject)
 # Use Installed Qt pacakges #
 #############################
 
-list(APPEND CMAKE_PREFIX_PATH 
-  /home/kbh/AAA/5.12.3/gcc_64/lib/cmake
-  /home/kbh/AAA/5.12.3/gcc_64/lib/cmake/Qt5Widgets
-  /home/kbh/AAA/5.12.3/gcc_64/lib/cmake/Qt5PaintDevice
-  )
-
 
 set(CMAKE_CXX_STANDARD 11)
 # Find includes in corresponding build directories
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
-# Instruct CMake to run moc automatically when needed
-set(CMAKE_AUTOMOC ON)
 
-set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 # Find the QtWidgets library
-find_package(Qt5Widgets CONFIG REQUIRED)
-find_package(Qt5Core CONFIG REQUIRED)
-find_package(Qt5Gui CONFIG REQUIRED)
 
+option(graphic "graphic" ON)
+message(${graphic})
 option(spec "spec" OFF)
-option(switch_2 "b" FF)
+option(switch_2 "b" OFF)
 option(button "a" OFF)
 option(label OFF)
 option(combobox OFF)
 option(target OFF)
 option(module OFF)
 option(frame OFF)
-option(graphic OFF)
  
 message(STATUS ${PROJECT_SOURCE_DIR})
 
@@ -43,8 +31,8 @@ set(LINKLIBS)
 
 include_directories(
   include
-    include/QtCore
-    include/QtGui
+  include/QtCore
+  include/QtGui
   include/QtWidgets
   )
 # Populate a CMake variable with the sources
@@ -107,10 +95,11 @@ if(spec)
   list(APPEND TARGETS exe_spec)
   add_executable(exe_spec main_spec.cpp ${SRC}) 
 endif(spec)
+
 if(graphic)
+  message("graphic")
   list(APPEND TARGETS exe_graphic)
   add_executable(exe_graphic main_graphic.cpp ${SRC}) 
-  message("spec ON")
 endif(graphic)
 
 
@@ -120,48 +109,34 @@ endif(graphic)
 
 #add_executable(exe_combobox main_combobox.cpp ${SRC})
 
+set(LINKLIBS)
+set(COMPILE_OPTION)
+
+	list(APPEND LINKLIBS
+	    ${PROJECT_SOURCE_DIR}/lib/libQt5Widgets.so.5
+	    ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so.5
+	    ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so.5
+	    ${PROJECT_SOURCE_DIR}/lib/libQt5XcbQpa.so.5
+	    ${PROJECT_SOURCE_DIR}/lib/platforms/libqxcb.so
+	    )  
+
+
+list(APPEND COMPILE_OPTION -fPIC)
+
+
 foreach(TARGET ${TARGETS})
-  target_link_libraries(${TARGET} Qt5::Widgets Qt5::Core Qt5::Gui)
+  target_link_libraries(${TARGET} ${LINKLIBS})
+  message(STATUS ${TARGET} " -- " ${LINKLIBS})
+  target_compile_options(${TARGET} PRIVATE ${COMPILE_OPTION} )
 endforeach()
+
+
 
 # Use the Widgets module from Qt 5
 
 #list(APPEND CMAKE_PREFIX_PATH ${PROJECT_SOURCE_DIR}/lib)
 #find_library(PATH_Qt5Core REQUIRED Qt5Core)
 
-
-################################
-# Use Standalone library files # 
-################################
-##
-##if(UNIX)
-##list(APPEND LINKLIBS
-##  # ${PROJECT_SOURCE_DIR}/lib/libQt5Widgets.so
-##  #  ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so
-##  #  ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so
-##    )  
-##	foreach(TARGET ${TARGETS})
-##    target_link_libraries(${TARGET} ${LINKLIBS})
-##    message("target" ${TARGET})
-##
-##	  target_compile_options(${TARGET} PRIVATE -fPIC)
-##	endforeach()
-##elseif(WIN32)
-##	link_directories(${PROJECT_SOURCE_DIR}/lib)
-##	foreach(TARGET ${TARGETS})
-##	  target_link_libraries(${TARGET} 
-##	 # ${PROJECT_SOURCE_DIR}/lib/Qt5Core.lib
-##	 # ${PROJECT_SOURCE_DIR}/lib/Qt5Gui.lib
-##	 # ${PROJECT_SOURCE_DIR}/lib/Qt5Widgets.lib)  
-##	  ${PROJECT_SOURCE_DIR}/lib/Qt5Core.lib
-##	  ${PROJECT_SOURCE_DIR}/lib/Qt5Gui.lib
-##	  ${PROJECT_SOURCE_DIR}/lib/Qt5Widgets.lib
-##    m
-##    )  
-##	  endforeach()
-##	 
-##endif()
-##
 
 message(${PROJECT_SOURCE_DIR})
 
