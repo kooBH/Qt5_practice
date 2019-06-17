@@ -17,6 +17,7 @@ class GLWidget : public QOpenGLWidget
     W_OBJECT(GLWidget)
 public:
     GLWidget(QWidget *parent=nullptr);
+    ~GLWidget();
 
 public slots:
     void animate();
@@ -26,15 +27,13 @@ protected:
 
 private:
 
- //   Helper helper;
-//
-QBrush background;
+    QBrush background;
     QBrush circleBrush;
-    QFont textFont;
     QPen circlePen;
-    QPen textPen;
     QPixmap backgroundPixmap;
 
+
+    QPainter painter;
 
     int elapsed;
 };

@@ -17,7 +17,7 @@
 int main(int argc, char **argv)
 {
 
-  const int num = 10;
+  const int num = 20;
 
   QCoreApplication::addLibraryPath("../lib");
 

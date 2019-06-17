@@ -24,9 +24,9 @@ GLWidget::GLWidget( QWidget *parent )
     circleBrush = QBrush(Qt::black);
     circlePen = QPen(Qt::black);
     circlePen.setWidth(1);
-    textPen = QPen(Qt::white);
-    textFont.setPixelSize(50);
 
+}
+GLWidget::~GLWidget(){
 }
 //! [0]
 
@@ -42,25 +42,27 @@ void GLWidget::animate()
 //! [2]
 void GLWidget::paintEvent(QPaintEvent *event)
 {
-    QPainter painter;
+
     painter.begin(this);
+
     painter.setRenderHint(QPainter::Antialiasing);
-    //helper.paint(&painter, event, elapsed);
-    painter.drawPixmap(0,0,1000,200,backgroundPixmap);  
-    painter.save();
+
     painter.setOpacity(0.5);
     painter.setBrush(circleBrush);
     painter.setPen(circlePen);
+
+//    QPainter painter;
+  //  painter.begin(this);
+  //  painter.setRenderHint(QPainter::Antialiasing);
+    //helper.paint(&painter, event, elapsed);
+    painter.drawPixmap(0,0,1000,200,backgroundPixmap);  
+  //  painter.save();
     painter.drawRect(0,0,elapsed,200);
 
-    painter.restore();
-    painter.setPen(textPen);
-    painter.setFont(textFont);
-    painter.drawText(QRect(-50, -50, 100, 100), Qt::AlignCenter, QStringLiteral("Qt"));
-
-
-
+//    painter.restore();
+//
     painter.end();
+
 }
 
 
