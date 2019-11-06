@@ -12,8 +12,8 @@ set(CMAKE_CXX_STANDARD 14)
 
 # Find the QtWidgets library
 
-option(graphic "graphic" ON)
-message(${graphic})
+option(textedit  OFF)
+option(graphic "graphic" OFF)
 option(spec "spec" OFF)
 option(switch_2 "b" OFF)
 option(button "a" OFF)
@@ -22,18 +22,27 @@ option(combobox OFF)
 option(target OFF)
 option(module OFF)
 option(frame OFF)
+option(web ON)
  
 message(STATUS ${PROJECT_SOURCE_DIR})
 
 
 set(LINKLIBS)
 
-
 include_directories(
   include
   include/QtCore
   include/QtGui
   include/QtWidgets
+
+  include/QtWebEngine
+  include/QtWebEngineCore
+  include/QtWebEngineWidgets
+  include/QtQml
+  include/QtNetwork
+  include/QtQuick
+  include/QtPositioning
+  include/QtWebChannel
   )
 # Populate a CMake variable with the sources
 set(SRC
@@ -52,7 +61,6 @@ set(SRC
     #  switch_2.cpp
     KGl.h
     KGl.cpp
-
    
     BorderLayout.h
     BorderLayout.cpp
@@ -97,14 +105,18 @@ if(spec)
   list(APPEND TARGETS exe_spec)
   add_executable(exe_spec main_spec.cpp ${SRC}) 
 endif(spec)
-
 if(graphic)
-  message("graphic")
   list(APPEND TARGETS exe_graphic)
   add_executable(exe_graphic main_graphic.cpp ${SRC}) 
 endif(graphic)
-
-
+if(textedit)
+  list(APPEND TARGETS exe_graphic)
+  add_executable(exe_graphic main_graphic.cpp ${SRC}) 
+endif(textedit)
+if(web)
+  list(APPEND TARGETS exe_web)
+  add_executable(exe_web main_web.cpp ${SRC})
+endif(web)
 
 #link_directories("${CMAKE_SOURCE_DIR}/lib")
 # Tell CMake to create the helloworld executable
@@ -119,8 +131,20 @@ set(COMPILE_OPTION)
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5Core.so.5
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5Gui.so.5
 	    ${PROJECT_SOURCE_DIR}/lib/libQt5XcbQpa.so.5
-
 	    ${PROJECT_SOURCE_DIR}/lib/platforms/libqxcb.so
+
+      ${PROJECT_SOURCE_DIR}/lib/libQt5WebEngine.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5WebEngineCore.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5WebEngineWidgets.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5Qml.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5Quick.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5QuickWidgets.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5Network.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5WebChannel.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5Positioning.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5PositioningQuick.so.5
+      ${PROJECT_SOURCE_DIR}/lib/libQt5PrintSupport.so.5
+
 
       #	    ${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-egl-integration.so
       #${PROJECT_SOURCE_DIR}/lib/xcbglintegrations/libqxcb-glx-integration.so
